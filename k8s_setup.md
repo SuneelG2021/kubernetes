@@ -13,7 +13,7 @@ You can follow the same procedure in k8s official documentation. AWS document [G
    d. Test that your kubectl installation was successful by using the command kubectl version --short --client
 
    ```sh
-   curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.25.6/2023-01-30/bin/linux/amd64/kubectl
+   curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.32.0/2024-12-20/bin/linux/amd64/kubectl
    chmod +x ./kubectl
    mv ./kubectl /usr/local/bin
    kubectl version --short --client
