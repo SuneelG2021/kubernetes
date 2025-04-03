@@ -25,6 +25,7 @@ You can follow the same procedure in k8s official documentation. AWS document [G
 
    ```sh
    curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+   curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.135.0/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
    sudo mv /tmp/eksctl /usr/local/bin
    eksctl version
    ```
