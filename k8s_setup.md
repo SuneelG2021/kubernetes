@@ -5,7 +5,12 @@ You can follow the same procedure in k8s official documentation. AWS document [G
 #### Pre-Requisites:
   - EC2 Instance (t2.small)
   - Install AWSCLI latest verison in the EC2 Instance
-
+  ```sh
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  sudo ./aws/install
+  aws --version  # Confirm installation
+  ```
 1. Setup kubectl
    a. Download latest kubectl version 1.25
    b. Grant execution permissions for kubectl as a executable
