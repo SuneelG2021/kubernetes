@@ -19,10 +19,11 @@ You can follow the same procedure in k8s official documentation. AWS document [G
 
    ```sh
    curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-  chmod +x kubectl
-  sudo mv kubectl /usr/local/bin
-  kubectl version --client --short
+   chmod +x kubectl
+   sudo mv kubectl /usr/local/bin
+   kubectl version --client --short
    ```
+
 2. Setup eksctl
    a. Download and extract the latest release of eksctl
    b. Move the extracted binary to /usr/local/bin
@@ -30,8 +31,8 @@ You can follow the same procedure in k8s official documentation. AWS document [G
 
    ```sh
    curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-    sudo mv /tmp/eksctl /usr/local/bin
-    eksctl version
+   sudo mv /tmp/eksctl /usr/local/bin
+   eksctl version
    ```
 
 3. Now create an IAM Role and attache it to EC2 instance
