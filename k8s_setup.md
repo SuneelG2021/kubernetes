@@ -18,10 +18,10 @@ You can follow the same procedure in k8s official documentation. AWS document [G
    d. Test that your kubectl installation was successful by using the command kubectl version --short --client
 
    ```sh
-   curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.32.0/2024-12-20/bin/linux/amd64/kubectl
-   chmod +x ./kubectl
-   mv ./kubectl /usr/local/bin
-   kubectl version --short --client
+   curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  chmod +x kubectl
+  sudo mv kubectl /usr/local/bin
+  kubectl version --client --short
    ```
 2. Setup eksctl
    a. Download and extract the latest release of eksctl
@@ -29,10 +29,9 @@ You can follow the same procedure in k8s official documentation. AWS document [G
    c. Test that your eksctl installation was successful by using the command eksctl version
 
    ```sh
-   curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-   curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/v0.135.0/eksctl_Linux_amd64.tar.gz" | tar xz -C /tmp
-   sudo mv /tmp/eksctl /usr/local/bin
-   eksctl version
+   curl --silent --location "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+    sudo mv /tmp/eksctl /usr/local/bin
+    eksctl version
    ```
 
 3. Now create an IAM Role and attache it to EC2 instance
@@ -45,25 +44,36 @@ You can follow the same procedure in k8s official documentation. AWS document [G
 
 4. Now create your k8s cluster and nodes
    ```sh
-   eksctl create cluster --name cluster-name  \
-   --region region-name \
-   --node-type instance-type \
-   --nodes-min 2 \
-   --nodes-max 2 \
-   --zones <AZ-1>,<AZ-2>
-
-   Example:
-   eksctl create cluster --name dhanvantari-cluster \
-      --region us-east-2 \
-   --node-type t2.medium \
-    ```
-
-5. To delete the EKS clsuter execute the below command
-   ```sh
-   eksctl delete cluster dhanvantari-cluster --region ap-south-1
+   eksctl create cluster \
+    --name your-cluster-name \
+    --region your-region \
+    --nodegroup-name standard-workers \
+    --node-type t3.medium \
+    --nodes 2 \
+    --nodes-min 2 \
+    --nodes-max 4 \
+    --managed
    ```
 
-6. Validate your cluster using by creating by checking nodes and by creating a pod
+   Example:
+   ```sh
+   eksctl create cluster \
+    --name gs-cluster \
+    --region ap-south-1 \
+    --nodegroup-name standard-workers \
+    --node-type t3.medium \
+    --nodes 2 \
+    --nodes-min 2 \
+    --nodes-max 4 \
+    --managed
+    ```
+
+6. To delete the EKS clsuter execute the below command
+   ```sh
+   eksctl delete cluster gs-cluster --region ap-south-1
+   ```
+
+7. Validate your cluster using by creating by checking nodes and by creating a pod
    ```sh
    kubectl get nodes
    kubectl run nginx --image=nginx
