@@ -12,10 +12,11 @@ You can follow the same procedure in k8s official documentation. AWS document [G
   aws --version  # Confirm installation
   ```
 1. Setup kubectl
-   a. Download latest kubectl version 1.25
-   b. Grant execution permissions for kubectl as a executable
-   c. Move kubectl onto /usr/local/bin
-   d. Test that your kubectl installation was successful by using the command kubectl version --short --client
+   
+   a) Download latest kubectl version 1.25
+   b) Grant execution permissions for kubectl as a executable
+   c) Move kubectl onto /usr/local/bin
+   d) Test that your kubectl installation was successful by using the command kubectl version --short --client
 
    ```sh
    curl -LO "https://dl.k8s.io/release/$(curl -Ls https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -24,7 +25,7 @@ You can follow the same procedure in k8s official documentation. AWS document [G
    kubectl version --client --short
    ```
 
-2. Setup eksctl
+3. Setup eksctl
    a. Download and extract the latest release of eksctl
    b. Move the extracted binary to /usr/local/bin
    c. Test that your eksctl installation was successful by using the command eksctl version
@@ -35,7 +36,7 @@ You can follow the same procedure in k8s official documentation. AWS document [G
    eksctl version
    ```
 
-3. Now create an IAM Role and attache it to EC2 instance
+4. Now create an IAM Role and attache it to EC2 instance
 
    IAM user should have access to the following services
 
@@ -43,7 +44,7 @@ You can follow the same procedure in k8s official documentation. AWS document [G
    
    Note: Check eksctl documentaiton for [Minimum IAM policies](https://eksctl.io/usage/minimum-iam-policies/)
 
-4. Now create your k8s cluster and nodes
+5. Now create your k8s cluster and nodes
    ```sh
    eksctl create cluster \
     --name your-cluster-name \
