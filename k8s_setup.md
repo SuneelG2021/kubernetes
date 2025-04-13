@@ -14,8 +14,11 @@ You can follow the same procedure in k8s official documentation. AWS document [G
 1. Setup kubectl
    
    a) Download latest kubectl version 1.25
+   
    b) Grant execution permissions for kubectl as a executable
+   
    c) Move kubectl onto /usr/local/bin
+   
    d) Test that your kubectl installation was successful by using the command kubectl version --short --client
 
    ```sh
